@@ -82,7 +82,13 @@ const Layout: React.FC<LayoutProps> = ({ page, onNavigate, children, isAdmin, on
       {!hideSidebar && (
         <aside className={`sidebar ${isSidebarOpen ? 'open' : 'collapsed'}`}>
           <div className="sidebar-header">
-            {isSidebarOpen && <h2>Kiosk App</h2>}
+            {isSidebarOpen && (
+              <img
+                src="/tenaris-logo.png"
+                alt="Tenaris"
+                style={{ height: '40px', objectFit: 'contain' }}
+              />
+            )}
             <button className="sidebar-toggle" onClick={toggleSidebar}>
               {isSidebarOpen ? <FiChevronLeft /> : <FiMenu />}
             </button>

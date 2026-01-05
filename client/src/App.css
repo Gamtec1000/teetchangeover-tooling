@@ -1,24 +1,27 @@
 /* src/App.css */
 
 :root {
-  --primary-color: #367BF5;
-  --primary-color-dark: #2a62c4;
-  --secondary-color: #F5A623;
+  --primary-color: #1FA055;
+  --primary-color-dark: #178544;
+  --secondary-color: #0066B2;
   --background-color: #F7F9FC;
   --sidebar-bg: #FFFFFF;
   --text-color: #333;
-  --text-light: #777;
-  --border-color: #E0E0E0;
+  --text-light: #6B7280;
+  --border-color: #E5E7EB;
   --white: #fff;
   --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   --font-family: 'Poppins', sans-serif;
+  --success-color: #10B981;
+  --danger-color: #EF4444;
+  --warning-color: #F59E0B;
 }
 
 /* Dark Mode Overrides */
 [data-theme='dark'] {
-  --primary-color: #60a5fa; /* Lighter blue for dark mode */
-  --primary-color-dark: #3b82f6;
-  --secondary-color: #fbbf24;
+  --primary-color: #34D399; /* Lighter green for dark mode */
+  --primary-color-dark: #10B981;
+  --secondary-color: #60A5FA;
   --background-color: #111827; /* Very dark gray (almost black) */
   --sidebar-bg: #1f2937; /* Dark gray for panels/sidebar */
   --text-color: #f3f4f6; /* Light gray text */
@@ -26,11 +29,13 @@
   --border-color: #374151; /* Dark border */
   --white: #1f2937; /* Re-map 'white' to dark container color */
   --shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-  
+
   /* Additional semantic variables for Batch View */
-  --step-active-bg: #1e3a8a; /* Dark blue for active step */
-  --step-active-border: #3b82f6;
-  --success-color: #10b981;
+  --step-active-bg: #064E3B; /* Dark green for active step */
+  --step-active-border: #10B981;
+  --success-color: #10B981;
+  --danger-color: #F87171;
+  --warning-color: #FBBF24;
 }
 
 /* Global full height setup for the entire app */
@@ -544,7 +549,7 @@ button:hover {
     background-color: var(--background-color);
 }
 [data-theme='light'] .list-item-card.active {
-    background-color: #f0f7ff;
+    background-color: #ECFDF5;
 }
 
 .list-item-card .content {
@@ -608,12 +613,12 @@ button:hover {
 
 .selection-button.selected {
   border-color: var(--primary-color);
-  background-color: #e3f2fd;
+  background-color: #D1FAE5;
   color: var(--primary-color);
   font-weight: 700;
-  box-shadow: 0 0 0 2px rgba(54, 123, 245, 0.2);
+  box-shadow: 0 0 0 2px rgba(31, 160, 85, 0.2);
 }
 [data-theme='dark'] .selection-button.selected {
-    background-color: rgba(96, 165, 250, 0.2);
+    background-color: rgba(52, 211, 153, 0.2);
     color: var(--primary-color);
 }
