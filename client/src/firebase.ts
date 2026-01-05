@@ -24,15 +24,14 @@ import {
 } from 'firebase/firestore';
 import type { Machine, Part, PipeSize, Tool, ChangeoverTemplate, Step, ConsumableItem, ConsumableLog } from './types'; // Removed ChangeoverLog
 
-// TODO: Replace with your app's Firebase project configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBMJ0bA0R1dPH6S-H4MIvHemIhTWtKxehs",
-  authDomain: "shop-floor-kiosk.firebaseapp.com",
-  projectId: "shop-floor-kiosk",
-  storageBucket: "shop-floor-kiosk.firebasestorage.app",
-  messagingSenderId: "357012202474",
-  appId: "1:357012202474:web:598771fdd7be3cc7b80893",
-  measurementId: "G-B8M4T1V92G"
+  apiKey: "AIzaSyCQdV6juev_fqawgWbDeQufui17LBO4EyY",
+  authDomain: "teetchangeover-tooling.firebaseapp.com",
+  projectId: "teetchangeover-tooling",
+  storageBucket: "teetchangeover-tooling.firebasestorage.app",
+  messagingSenderId: "511419432642",
+  appId: "1:511419432642:web:7c352c6d171fdac915855b",
+  measurementId: "G-C2626PXJCZ"
 };
 
 // Initialize Firebase
