@@ -1,0 +1,619 @@
+/* src/App.css */
+
+:root {
+  --primary-color: #367BF5;
+  --primary-color-dark: #2a62c4;
+  --secondary-color: #F5A623;
+  --background-color: #F7F9FC;
+  --sidebar-bg: #FFFFFF;
+  --text-color: #333;
+  --text-light: #777;
+  --border-color: #E0E0E0;
+  --white: #fff;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --font-family: 'Poppins', sans-serif;
+}
+
+/* Dark Mode Overrides */
+[data-theme='dark'] {
+  --primary-color: #60a5fa; /* Lighter blue for dark mode */
+  --primary-color-dark: #3b82f6;
+  --secondary-color: #fbbf24;
+  --background-color: #111827; /* Very dark gray (almost black) */
+  --sidebar-bg: #1f2937; /* Dark gray for panels/sidebar */
+  --text-color: #f3f4f6; /* Light gray text */
+  --text-light: #9ca3af; /* Muted text */
+  --border-color: #374151; /* Dark border */
+  --white: #1f2937; /* Re-map 'white' to dark container color */
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  
+  /* Additional semantic variables for Batch View */
+  --step-active-bg: #1e3a8a; /* Dark blue for active step */
+  --step-active-border: #3b82f6;
+  --success-color: #10b981;
+}
+
+/* Global full height setup for the entire app */
+html, body, #root, .App {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* Prevent global scroll for kiosk app */
+}
+
+.layout {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* Ensure layout itself does not scroll */
+}
+
+/* Sidebar Styling */
+.sidebar {
+  width: 250px; /* Base width for desktop */
+  flex-shrink: 0; /* Prevent sidebar from shrinking */
+  height: 100%;
+  background: var(--sidebar-bg);
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  transition: width 0.3s ease, transform 0.3s ease; /* Add transform for mobile slide */
+  z-index: 100;
+}
+
+.sidebar.collapsed {
+  width: 80px; /* Collapsed width for desktop */
+}
+
+.sidebar-header {
+  padding: 1.5rem;
+  color: var(--primary-color);
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.sidebar-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.sidebar.collapsed .sidebar-header {
+  justify-content: center;
+  padding: 1rem;
+}
+
+.sidebar-toggle {
+  background: none;
+  border: none;
+  color: var(--primary-color);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 5px;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.sidebar-toggle:hover {
+  background: rgba(0, 0, 0, 0.05);
+  box-shadow: none;
+}
+
+.sidebar-nav {
+    flex-grow: 1; /* Allow navigation to take available space */
+    overflow-y: auto; /* Make navigation scrollable if content overflows */
+}
+
+.sidebar-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-nav li {
+  display: flex;
+  align-items: center;
+  padding: 0.8rem 1.5rem; /* Adjusted padding */
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  font-weight: 500;
+  color: var(--text-light);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; /* Handle overflow gracefully */
+  gap: 1rem; /* Use gap for spacing */
+  font-size: 1rem; /* Consistent font size */
+}
+
+.sidebar.collapsed .sidebar-nav li {
+  justify-content: center;
+  padding: 0.8rem 0;
+  gap: 0; /* No gap when collapsed */
+}
+
+.sidebar-nav li:hover {
+  background: var(--background-color); /* Light hover background */
+  color: var(--primary-color);
+}
+
+.sidebar-nav li.active {
+  background: var(--primary-color);
+  color: var(--white);
+  border-left: 4px solid var(--secondary-color); /* Indicative border */
+}
+
+.sidebar.collapsed .sidebar-nav li.active {
+  border-left: 4px solid var(--secondary-color);
+  border-right: none;
+}
+
+.sidebar-nav li svg {
+  margin-right: 0; /* Reset margin if using gap */
+  font-size: 1.2rem;
+  min-width: 1.2rem;
+  flex-shrink: 0; /* Prevent icon from shrinking */
+}
+
+.sidebar-nav li span {
+  flex-grow: 1; /* Allow text to take remaining space */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sidebar-footer {
+    margin-top: auto; /* Push to bottom */
+    padding: 1.5rem;
+    flex-shrink: 0; /* Prevent footer from shrinking */
+}
+
+.sidebar.collapsed .sidebar-footer {
+    padding: 1rem;
+}
+
+.sidebar-footer button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar.collapsed .sidebar-footer button {
+    padding: 0.8rem;
+}
+
+.sidebar-footer button svg {
+    margin-right: 0.5rem;
+}
+
+.sidebar.collapsed .sidebar-footer button svg {
+    margin-right: 0;
+}
+
+/* Mobile Menu Button - Hidden by default on desktop */
+.mobile-menu-btn {
+  display: none;
+}
+
+/* Main Content Styling */
+.main-content {
+  flex-grow: 1; /* Take all available space horizontally */
+  padding: 2rem;
+  transition: padding 0.3s ease; /* Smooth padding transitions */
+  height: 100%; /* Fill parent height */
+  overflow-y: auto; /* Allow content to scroll if it overflows */
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  background-color: var(--background-color); /* Ensure background adapts */
+  color: var(--text-color); /* Ensure text adapts */
+}
+
+.main-content.collapsed {
+  /* margin-left: 80px;  Removed since using flex */
+}
+
+/* Ensure the changeover flow container fills the available height */
+.changeover-flow {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Fill parent height */
+  min-height: 0; /* Allow internal scrolling */
+}
+
+/* Responsive Design / Media Queries */
+@media (max-width: 768px) {
+    /* Show the mobile toggle button */
+    .mobile-menu-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        z-index: 900; /* Below sidebar (1000) but above content */
+        background: var(--sidebar-bg);
+        border: 1px solid var(--border-color);
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        border-radius: 4px;
+        padding: 0.5rem;
+        font-size: 1.5rem;
+        color: var(--primary-color);
+        width: auto; /* Reset width */
+        margin: 0;
+    }
+
+    .sidebar {
+        position: absolute; /* Overlay on mobile */
+        left: 0;
+        top: 0;
+        height: 100%;
+        transform: translateX(-100%); /* Start hidden off-screen */
+        width: 250px; /* Fixed width for mobile sidebar */
+        z-index: 1000;
+        background-color: var(--sidebar-bg); /* Ensure mobile sidebar has bg */
+    }
+
+    .sidebar.open {
+        transform: translateX(0); /* Slide in when open */
+        box-shadow: 5px 0 15px rgba(0,0,0,0.2);
+    }
+    
+    .sidebar.collapsed {
+        transform: translateX(-100%); /* Keep hidden when collapsed */
+        width: 250px; /* Keep width consistent */
+    }
+
+    /* Fix Header Alignment on Mobile when Open */
+    .sidebar-header {
+        padding: 1rem;
+        justify-content: space-between; /* Ensure toggle and text are split */
+    }
+    
+    /* Ensure the internal toggle button works well on mobile */
+    .sidebar-toggle {
+        padding: 0.5rem;
+    }
+
+    .main-content {
+        padding: 0.5rem; /* Reduced padding on small screens */
+        padding-top: 3.5rem; /* Add top padding so content isn't hidden behind the fixed mobile button */
+    }
+    
+    .main-content.collapsed {
+        margin-left: 0; /* No margin when sidebar is absolute */
+    }
+
+    /* Remove the old specific fixed toggle rule if it existed or conflicts */
+    /* .sidebar-toggle { position: static; } implied */
+}
+
+@media (max-width: 480px) {
+    .sidebar.open {
+      width: 80%; /* Don't take full width on tiny screens, leave some main content visible */
+      max-width: 250px;
+    }
+}
+
+
+/* Dashboard Specific Styles (kept for context, outside of core layout changes) */
+.dashboard .stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.dashboard .stat-card, .chart-card {
+  background: var(--white);
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  color: var(--text-color);
+}
+
+.dashboard .stat-card h3 {
+  margin-top: 0;
+  color: var(--text-light);
+}
+
+.dashboard .stat-card p {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.dashboard .charts-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.changeover-header {
+  background-color: var(--white);
+  padding: 1rem 2rem; /* Default padding */
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  color: var(--text-color);
+}
+
+@media (max-width: 768px) {
+  .changeover-header {
+    padding: 0.2rem 0.5rem; /* Even smaller padding for vertical mode */
+    margin-bottom: 0.5rem; /* Reduced margin */
+  }
+
+  .changeover-header h2 {
+    font-size: 1.2rem !important; /* Smaller font for machine name */
+  }
+
+  .changeover-header div[style*="font-size"] { /* Target the div with inline font-size for 'From: To:' */
+    font-size: 0.9rem !important; /* Smaller font for size display */
+  }
+}
+
+
+input, select, textarea {
+    padding: 0.8rem;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    vertical-align: middle;
+    margin: 0.5rem; /* Add spacing around inputs */
+    background-color: var(--white);
+    color: var(--text-color);
+}
+
+/* Form Group Overrides */
+.form-group input, .form-group select, .form-group textarea {
+    width: 100%;
+    margin: 0; /* Reset margin for form groups */
+}
+
+button {
+  padding: 0.8rem 1.5rem;
+  margin: 0.5rem; /* Spacing between buttons */
+  border: none;
+  border-radius: 5px;
+  background: var(--primary-color);
+  color: #fff; /* Always white text on primary buttons */
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+button:hover {
+  background: var(--primary-color-dark);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: var(--white);
+  padding: 2rem;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 500px;
+  color: var(--text-color);
+}
+
+.machine-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.machine-card {
+    background: var(--white);
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    color: var(--text-color);
+}
+
+.machine-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+.machine-image {
+    height: 150px;
+    background: var(--border-color); /* Was light-gray */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.machine-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.placeholder-image {
+    color: var(--text-light);
+}
+
+.machine-card h3 {
+    padding: 1rem;
+    margin: 0;
+}
+
+/* Logs Table */
+.logs-table {
+  margin-top: 2rem;
+  color: var(--text-color);
+}
+
+.logs-table h3 {
+  margin-bottom: 1rem;
+  color: var(--text-color);
+}
+
+.logs-table table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--white);
+  border-radius: 8px;
+  overflow: hidden; /* Ensures rounded corners apply to children */
+  box-shadow: var(--shadow);
+  color: var(--text-color);
+}
+
+.logs-table th, .logs-table td {
+  padding: 1rem 1.5rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-color);
+}
+
+.logs-table th {
+  background-color: var(--primary-color);
+  color: #fff;
+  font-weight: 600;
+}
+
+/* List Item Card Styling */
+.list-item-card {
+    padding: 1.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--white);
+    margin-bottom: 1rem;
+    box-shadow: var(--shadow);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.2s ease;
+    color: var(--text-color);
+}
+
+.list-item-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+.list-item-card.active {
+    border-color: var(--primary-color);
+    background-color: var(--background-color);
+}
+[data-theme='light'] .list-item-card.active {
+    background-color: #f0f7ff;
+}
+
+.list-item-card .content {
+    flex-grow: 1;
+    margin-right: 1rem;
+}
+
+.list-item-card .actions {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.list-item-card .edit-form {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.list-item-card .edit-form input {
+    margin: 0.2rem;
+    flex: 1;
+}
+
+/* Specific adjustments for lists */
+.management-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Selection Grid Styles */
+.selection-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.selection-button {
+  padding: 1rem;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  background-color: var(--white);
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+.selection-button:hover {
+  border-color: var(--primary-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+.selection-button.selected {
+  border-color: var(--primary-color);
+  background-color: #e3f2fd;
+  color: var(--primary-color);
+  font-weight: 700;
+  box-shadow: 0 0 0 2px rgba(54, 123, 245, 0.2);
+}
+[data-theme='dark'] .selection-button.selected {
+    background-color: rgba(96, 165, 250, 0.2);
+    color: var(--primary-color);
+}

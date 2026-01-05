@@ -1,0 +1,615 @@
+{
+  "machines": [
+    {
+      "id": "MKsBpj3PpveSILkZ0UcI",
+      "name": "Buck on",
+      "description": "",
+      "imageUrl": "http://172.20.10.2:3001/uploads/1764158828886-148436204.jpeg"
+    },
+    {
+      "id": "Vfpwfm8QHMzdMxStezpY",
+      "description": "",
+      "name": "Swaging Machine",
+      "imageUrl": "http://172.20.10.2:3001/uploads/1764158797173-667526827.jpeg"
+    },
+    {
+      "id": "eAvxQFmYYbJCpenQltiY",
+      "name": "Stress relief",
+      "description": "",
+      "imageUrl": "http://172.20.10.2:3001/uploads/1764158858828-780699764.jpeg"
+    },
+    {
+      "id": "tKeIBD2WmqPpPj6IsJUC",
+      "name": "Colinet",
+      "imageUrl": "http://172.20.10.2:3001/uploads/1764158597410-685022175.jpeg",
+      "description": ""
+    }
+  ],
+  "parts": [
+    {
+      "id": "8bElW6GjMPnaA5qkKSUd",
+      "pdfName": "Clamping Range 2.png",
+      "partNumber": "1041741",
+      "imageUrl": "http://172.20.10.2:3001/uploads/1764159819753-18779254.jpeg",
+      "stock": 1,
+      "pdfUrl": "http://172.20.10.2:3001/uploads/1764159819766-364631173.png",
+      "name": "Clamping Range 2",
+      "location": "",
+      "machineId": "MKsBpj3PpveSILkZ0UcI",
+      "pipeSize": "9\" 5/8"
+    },
+    {
+      "id": "CvcGlX92ERVUrseALBso",
+      "pipeSize": "7\"",
+      "machineId": "eAvxQFmYYbJCpenQltiY",
+      "stock": 1,
+      "partNumber": "2",
+      "pdfUrl": "http://172.20.10.2:3001/uploads/1764159194902-904554168.png",
+      "imageUrl": "http://172.20.10.2:3001/uploads/1764159194895-552161034.jpeg",
+      "name": "Heating Coil",
+      "location": "",
+      "pdfName": "Heating Coil 2.png"
+    },
+    {
+      "id": "Fyjib95MSn9EVomsU7fx",
+      "machineId": "MKsBpj3PpveSILkZ0UcI",
+      "name": "Clamping Range 5",
+      "location": "",
+      "imageUrl": "http://172.20.10.2:3001/uploads/1764160061382-130113282.jpeg",
+      "pipeSize": "4\" 1/2",
+      "partNumber": "1035119",
+      "stock": 1,
+      "pdfUrl": "http://172.20.10.2:3001/uploads/1764160061403-540825259.png",
+      "pdfName": "Clamping Range 5.png"
+    },
+    {
+      "id": "IJEIxfN2Fz2M7TBSKPxS",
+      "partNumber": "1035120",
+      "pdfName": "Clamping Range 3.png",
+      "location": "",
+      "pdfUrl": "http://172.20.10.2:3001/uploads/1764159898453-774759925.png",
+      "imageUrl": "http://172.20.10.2:3001/uploads/1764159898435-832864946.jpeg",
+      "machineId": "MKsBpj3PpveSILkZ0UcI",
+      "pipeSize": "7\"",
+      "name": "Clamping Range 3",
+      "stock": 1
+    },
+    {
+      "id": "PGqivNjilB207VUODFRJ",
+      "pipeSize": "4\" 1/2",
+      "stock": 1,
+      "imageUrl": "http://172.20.10.2:3001/uploads/1764147971723-477877600.jpg",
+      "location": "e",
+      "partNumber": "2234",
+      "machineId": "ov5tyu3IQSPwcMLn6fOi",
+      "name": "insert"
+    },
+    {
+      "id": "aK0e8ALf5Baz75XaS3eq",
+      "stock": 1,
+      "partNumber": "5",
+      "pdfName": "Heating Coil 2.png",
+      "name": "Heating Coil",
+      "pipeSize": "13\" 3/8",
+      "pdfUrl": "http://172.20.10.2:3001/uploads/1764159537983-119070235.png",
+      "machineId": "eAvxQFmYYbJCpenQltiY",
+      "imageUrl": "http://172.20.10.2:3001/uploads/1764159537972-822363628.png",
+      "location": ""
+    },
+    {
+      "id": "azYFWSaBGjhFducq92V0",
+      "location": "",
+      "stock": 1,
+      "name": "Clamping Range 1",
+      "pdfName": "Clamping Range 1.png",
+      "pipeSize": "13\" 3/8",
+      "machineId": "MKsBpj3PpveSILkZ0UcI",
+      "pdfUrl": "http://172.20.10.2:3001/uploads/1764159723183-627197843.png",
+      "imageUrl": "http://172.20.10.2:3001/uploads/1764159723175-412100631.jpeg",
+      "partNumber": "1041742"
+    },
+    {
+      "id": "dTlStc2ppByqT7Y6P36B",
+      "location": "",
+      "partNumber": "",
+      "stock": 0,
+      "pipeSize": "4\" 1/2",
+      "machineId": "ov5tyu3IQSPwcMLn6fOi",
+      "name": "test1"
+    },
+    {
+      "id": "g0Rme5Hlp4SNkcD0TX5y",
+      "location": "rr",
+      "machineId": "ov5tyu3IQSPwcMLn6fOi",
+      "name": "test",
+      "stock": 1,
+      "pipeSize": "4\" 1/2",
+      "partNumber": "112"
+    },
+    {
+      "id": "gOBumeS0jSOtn9WJXnSB",
+      "pipeSize": "4\" 1/2",
+      "name": "Heating Coil",
+      "location": "",
+      "machineId": "eAvxQFmYYbJCpenQltiY",
+      "imageUrl": "http://172.20.10.2:3001/uploads/1764159282339-434270862.jpeg",
+      "pdfName": "Heating Coil 2.jpeg",
+      "stock": 1,
+      "partNumber": "1",
+      "pdfUrl": "http://172.20.10.2:3001/uploads/1764159282352-342549070.jpeg"
+    },
+    {
+      "id": "iHsOkfuA9q7wI8ZE19FD",
+      "pipeSize": "5\" 1/2",
+      "machineId": "MKsBpj3PpveSILkZ0UcI",
+      "location": "",
+      "pdfName": "Clamping Range 4.png",
+      "name": "Clamping Range 4",
+      "pdfUrl": "http://172.20.10.2:3001/uploads/1764159993449-699398363.png",
+      "partNumber": "1041740",
+      "stock": 1,
+      "imageUrl": "http://172.20.10.2:3001/uploads/1764159993436-751321891.jpeg"
+    },
+    {
+      "id": "zxBHIohCP1rW3cYXAtfs",
+      "machineId": "eAvxQFmYYbJCpenQltiY",
+      "imageUrl": "http://172.20.10.2:3001/uploads/1764159350652-517337053",
+      "partNumber": "3",
+      "name": "Heating Coil",
+      "pdfUrl": "http://172.20.10.2:3001/uploads/1764159350661-292226863.png",
+      "location": "",
+      "stock": 1,
+      "pdfName": "Heating Coil 2.png",
+      "pipeSize": "9\" 5/8"
+    }
+  ],
+  "tools": [],
+  "pipe_sizes": [
+    {
+      "id": "FccmW1nM6IPy9KIkgg1H",
+      "name": "4\" 1/2"
+    },
+    {
+      "id": "T0mV2dDMG15aQfJihqlk",
+      "name": "5\" 1/2"
+    },
+    {
+      "id": "ZJBydZa4MCcp295EG4Sp",
+      "name": "7\""
+    },
+    {
+      "id": "ZbPndVqOJjgBiOrsNXgq",
+      "name": "9\" 5/8"
+    },
+    {
+      "id": "g99SyL0lrTKVRS0gvW8z",
+      "name": "13\" 3/8"
+    }
+  ],
+  "changeover_templates": [
+    {
+      "id": "nQxxKfZJOMlE7aIPJRjd",
+      "documents": [],
+      "pipeSize": "4\" 1/2",
+      "machineId": "MKsBpj3PpveSILkZ0UcI",
+      "estimatedTime": 45,
+      "steps": [
+        {
+          "id": "0Hr5R1eGEV9JQKZajfgV",
+          "imageUrls": [
+            "http://172.20.10.2:3001/uploads/1764326008278-646297461",
+            "http://172.20.10.2:3001/uploads/1764326008290-574344711.png"
+          ],
+          "order": 7,
+          "description": "• For small diameters: The clamping angle should be 135° ± 15° or 45° ± 15°.\n• For all other sizes: Adjust the angle to approximately 90° to minimize die penetration.\n• If coupling slippage occurs, increase the angle to 110° or 135° for greater clamping\nforce.",
+          "partIds": [],
+          "toolIds": [],
+          "title": "Clamping Angle Adjustments"
+        },
+        {
+          "id": "11vd3VB02RLLWSOyLOcj",
+          "description": "• Close the gate.\n• Switch the manual mode back to AUTO mode on the control panel.",
+          "imageUrls": [],
+          "order": 11,
+          "toolIds": [],
+          "partIds": [],
+          "title": "Final Setup and Activation"
+        },
+        {
+          "id": "TwdJ1567k6qVYQ37K9En",
+          "description": "Install the New Drift:\n• Secure the new drift shaft by tightening it clockwise.\n• Adjust the drift table height to align with the pipe centerline.\n• On the Touch Panel, move the drift forward to the coupling to verify alignment.",
+          "partIds": [],
+          "title": "Drift Change",
+          "imageUrls": [
+            "http://172.20.10.2:3001/uploads/1764326369376-385306209.png",
+            "http://172.20.10.2:3001/uploads/1764326369389-4921825.png",
+            "http://172.20.10.2:3001/uploads/1764326369400-158242499",
+            "http://172.20.10.2:3001/uploads/1764326369410-369910773"
+          ],
+          "order": 10,
+          "toolIds": []
+        },
+        {
+          "id": "V4LXjKho0lIlY8sFyXmO",
+          "toolIds": [],
+          "order": 4,
+          "title": "Mechanical Adjustments",
+          "partIds": [],
+          "imageUrls": [
+            "http://172.20.10.2:3001/uploads/1764325772313-209306313",
+            "http://172.20.10.2:3001/uploads/1764325772322-417805625"
+          ],
+          "description": "Before starting a job, adjust the rotary head centricity based on the pipe diameter.\nSet the clamping path as per Table 4.3 before installing the clamping jaws."
+        },
+        {
+          "id": "bdpUY9QA2BAmk88gjlmT",
+          "imageUrls": [
+            "http://172.20.10.2:3001/uploads/1764326257382-129674815"
+          ],
+          "order": 9,
+          "toolIds": [],
+          "partIds": [],
+          "title": "Drift Change",
+          "description": "• Guide the crane to move the drift out of the machine.\n• Release the magnetic yoke pin once the drift is properly supported."
+        },
+        {
+          "id": "hHsS2RzwxUO14SHBCEL9",
+          "title": "Safety Precautions",
+          "order": 1,
+          "toolIds": [],
+          "partIds": [],
+          "description": "• Engage the black Emergency Stop (E-Stop) for Zone 3.1 and Zone 3C.\n• On the Touchscreen Panel, go to Main → Gate and unlock the door by pressing T.LOCK.14.\n• Manually open the gate.",
+          "imageUrls": [
+            "http://172.20.10.2:3001/uploads/1764160653386-692471565.jpeg",
+            "http://172.20.10.2:3001/uploads/1764160653393-982368039.png",
+            "http://172.20.10.2:3001/uploads/1764160653404-285809161.png",
+            "http://172.20.10.2:3001/uploads/1764160653414-703608158.png",
+            "http://172.20.10.2:3001/uploads/1764160653420-183166722.png"
+          ]
+        },
+        {
+          "id": "hVu0DjqAT8JYbG5F7NyK",
+          "imageUrls": [
+            "http://172.20.10.2:3001/uploads/1764325946924-422345654",
+            "http://172.20.10.2:3001/uploads/1764325946935-945145484.png",
+            "http://172.20.10.2:3001/uploads/1764325946945-239464715.png",
+            "http://172.20.10.2:3001/uploads/1764325946959-581807058.png"
+          ],
+          "partIds": [
+            "Fyjib95MSn9EVomsU7fx"
+          ],
+          "toolIds": [],
+          "title": "Installation of New Jaws",
+          "order": 6,
+          "description": "• With the assistance of a helper, place each jaw into the jaw base.\n• Insert and tighten all bolts securely.\n• Repeat the process for all jaws.\n• Using a spanner, ensure all bolts are properly tightened.\n• Adjust the jaw height as per the reference manual."
+        },
+        {
+          "id": "kDnFpRFw6xmJbiOADpts",
+          "imageUrls": [
+            "http://172.20.10.2:3001/uploads/1764160663807-70176070.png",
+            "http://172.20.10.2:3001/uploads/1764160663818-692825980.jpeg",
+            "http://172.20.10.2:3001/uploads/1764160663826-634103419.png"
+          ],
+          "title": "Change Operating Mode",
+          "toolIds": [],
+          "partIds": [],
+          "description": "• On the in-line control panel, switch Zone 3.1 and Zone 3C from AUTO to MANUAL.\n• Navigate to Section 3C on the Touch Panel and stop the Buck-on Pump.",
+          "order": 0
+        },
+        {
+          "id": "nWZnpCsXyRg6anXOR2m4",
+          "order": 2,
+          "toolIds": [],
+          "partIds": [],
+          "imageUrls": [
+            "http://172.20.10.2:3001/uploads/1764325604618-635210186",
+            "http://172.20.10.2:3001/uploads/1764325604639-591637905.png"
+          ],
+          "description": "• Loosen the screws of the jaw lockers using a 6mm Allen key.\n• Once loosened, completely remove the bolts and slide out the jaw from the base.\n• Repeat the process for all positions in both the Rotary Head and Back Tong.",
+          "title": "Removal of Jaws"
+        },
+        {
+          "id": "psdrLr4GbxpwWLWJZZV3",
+          "title": "Mechanical Adjustments",
+          "toolIds": [],
+          "imageUrls": [
+            "http://172.20.10.2:3001/uploads/1764325827155-169628436",
+            "http://172.20.10.2:3001/uploads/1764325827166-397776025"
+          ],
+          "partIds": [],
+          "description": "Ensure the rotary head is fully open (0° crank angle) before adjusting.\nInsert a 12mm Allen wrench into the jaw guide and adjust by turning clockwise or\ncounterclockwise.\nVerify the settings using the scale at each jaw guide.",
+          "order": 5
+        },
+        {
+          "id": "qHYFGPECzuoq5LuDfKh7",
+          "imageUrls": [
+            "http://172.20.10.2:3001/uploads/1764325690411-427846831",
+            "http://172.20.10.2:3001/uploads/1764325690421-766761809"
+          ],
+          "toolIds": [],
+          "description": "• Use support of helper to transfer Jaws.\n• Clean the Bases of all Jaws.",
+          "order": 3,
+          "title": "Cleaning",
+          "partIds": []
+        },
+        {
+          "id": "yO93ZESxfzsNfKPlcM10",
+          "imageUrls": [
+            "http://172.20.10.2:3001/uploads/1764326204118-734165258",
+            "http://172.20.10.2:3001/uploads/1764326204130-675515356",
+            "http://172.20.10.2:3001/uploads/1764326204137-112174636",
+            "http://172.20.10.2:3001/uploads/1764326204143-283103462.png",
+            "http://172.20.10.2:3001/uploads/1764326204149-75504813.png",
+            "http://172.20.10.2:3001/uploads/1764326204156-924294080.png",
+            "http://172.20.10.2:3001/uploads/1764326204166-988084079"
+          ],
+          "toolIds": [],
+          "order": 8,
+          "description": "Remove the Old Drift:\n• Unscrew the bolt securing the drift.\n• Use a crane (ensure operator certification and inspection before use).\n• Attach the magnetic yoke to the drift and conduct a validation lift (30cm above\nthe drift table) to confirm a secure hold.",
+          "title": "Drift Change",
+          "partIds": []
+        }
+      ]
+    }
+  ],
+  "changeover_logs": [
+    {
+      "id": "1lFIqSxWf2l1htWPyfcL",
+      "operatorName": "la",
+      "date": {
+        "type": "firestore/timestamp/1.0",
+        "seconds": 1764760806,
+        "nanoseconds": 476000000
+      },
+      "toSize": "4\" 1/2",
+      "fromSize": "5\" 1/2",
+      "machineId": "MKsBpj3PpveSILkZ0UcI",
+      "stepNotes": [],
+      "finalNote": "",
+      "duration": 160
+    },
+    {
+      "id": "2G52h6qRYgVjIgnTXV7S",
+      "date": {
+        "type": "firestore/timestamp/1.0",
+        "seconds": 1764760822,
+        "nanoseconds": 5000000
+      },
+      "finalNote": "",
+      "operatorName": "la",
+      "stepNotes": [],
+      "toSize": "4\" 1/2",
+      "machineId": "MKsBpj3PpveSILkZ0UcI",
+      "fromSize": "5\" 1/2",
+      "duration": 160
+    },
+    {
+      "id": "3MotMEN86ZVwrP5mZSmD",
+      "operatorName": "Husain",
+      "machineId": "MKsBpj3PpveSILkZ0UcI",
+      "stepNotes": [
+        {
+          "stepIndex": 0,
+          "stepTitle": "Change Operating Mode",
+          "text": "great1"
+        },
+        {
+          "text": "good2",
+          "stepTitle": "Safety Precautions",
+          "stepIndex": 1
+        }
+      ],
+      "date": {
+        "type": "firestore/timestamp/1.0",
+        "seconds": 1764319517,
+        "nanoseconds": 585000000
+      },
+      "finalNote": "finish final",
+      "fromSize": "13\" 3/8",
+      "toSize": "4\" 1/2",
+      "duration": 8
+    },
+    {
+      "id": "A0C3Gr3rtAKbMkXBVjnc",
+      "duration": 79,
+      "operatorName": "Kiosk",
+      "stepNotes": [
+        {
+          "text": "1\n",
+          "stepIndex": 0,
+          "stepTitle": "Change Operating Mode"
+        }
+      ],
+      "date": {
+        "type": "firestore/timestamp/1.0",
+        "seconds": 1764861802,
+        "nanoseconds": 859000000
+      },
+      "toSize": "4\" 1/2",
+      "finalNote": "Works",
+      "fromSize": "5\" 1/2",
+      "machineId": "MKsBpj3PpveSILkZ0UcI"
+    },
+    {
+      "id": "KRFSaM4jZJ17Ss93NZgs",
+      "stepNotes": [],
+      "finalNote": "",
+      "date": {
+        "type": "firestore/timestamp/1.0",
+        "seconds": 1764760825,
+        "nanoseconds": 642000000
+      },
+      "machineId": "MKsBpj3PpveSILkZ0UcI",
+      "duration": 160,
+      "toSize": "4\" 1/2",
+      "fromSize": "5\" 1/2",
+      "operatorName": "la"
+    },
+    {
+      "id": "NskouYtZFC4aE8Bgq5JJ",
+      "duration": 133,
+      "fromSize": "13\" 3/8",
+      "toSize": "4\" 1/2",
+      "date": {
+        "type": "firestore/timestamp/1.0",
+        "seconds": 1764328198,
+        "nanoseconds": 555000000
+      },
+      "finalNote": "",
+      "operatorName": "new",
+      "stepNotes": [],
+      "machineId": "MKsBpj3PpveSILkZ0UcI"
+    },
+    {
+      "id": "ORugO0fNjux0yYpMHFJS",
+      "stepNotes": [],
+      "finalNote": "",
+      "operatorName": "la",
+      "duration": 160,
+      "machineId": "MKsBpj3PpveSILkZ0UcI",
+      "toSize": "4\" 1/2",
+      "fromSize": "5\" 1/2",
+      "date": {
+        "type": "firestore/timestamp/1.0",
+        "seconds": 1764760804,
+        "nanoseconds": 696000000
+      }
+    },
+    {
+      "id": "RiAHMy9RplFzFCUjFq1p",
+      "toSize": "4\" 1/2",
+      "duration": 31,
+      "fromSize": "5\" 1/2",
+      "finalNote": "",
+      "operatorName": "Iphone",
+      "date": {
+        "type": "firestore/timestamp/1.0",
+        "seconds": 1764757873,
+        "nanoseconds": 505000000
+      },
+      "stepNotes": [],
+      "machineId": "MKsBpj3PpveSILkZ0UcI"
+    },
+    {
+      "id": "TaL0XCRrOoLTuBuQkCgs",
+      "date": {
+        "type": "firestore/timestamp/1.0",
+        "seconds": 1764326742,
+        "nanoseconds": 214000000
+      },
+      "finalNote": "",
+      "fromSize": "13\" 3/8",
+      "stepNotes": [],
+      "duration": 132,
+      "machineId": "MKsBpj3PpveSILkZ0UcI",
+      "operatorName": "iPhone ",
+      "toSize": "4\" 1/2"
+    },
+    {
+      "id": "UHTbWctozvpKJyYapt3i",
+      "fromSize": "5\" 1/2",
+      "duration": 160,
+      "operatorName": "la",
+      "finalNote": "",
+      "toSize": "4\" 1/2",
+      "stepNotes": [],
+      "date": {
+        "type": "firestore/timestamp/1.0",
+        "seconds": 1764760823,
+        "nanoseconds": 532000000
+      },
+      "machineId": "MKsBpj3PpveSILkZ0UcI"
+    },
+    {
+      "id": "VF5pRhQ5GtXay3mhzZeb",
+      "date": {
+        "type": "firestore/timestamp/1.0",
+        "seconds": 1764751858,
+        "nanoseconds": 872000000
+      },
+      "stepNotes": [],
+      "finalNote": "laptop",
+      "toSize": "4\" 1/2",
+      "operatorName": "husain",
+      "machineId": "MKsBpj3PpveSILkZ0UcI",
+      "duration": 103,
+      "fromSize": "13\" 3/8"
+    },
+    {
+      "id": "WMK2golixVytZurn6BNd",
+      "date": {
+        "type": "firestore/timestamp/1.0",
+        "seconds": 1764753199,
+        "nanoseconds": 497000000
+      },
+      "finalNote": "123",
+      "operatorName": "lap",
+      "toSize": "4\" 1/2",
+      "stepNotes": [
+        {
+          "stepIndex": 2,
+          "stepTitle": "Removal of Jaws",
+          "text": "3"
+        },
+        {
+          "text": "hi",
+          "stepTitle": "Installation of New Jaws",
+          "stepIndex": 6
+        },
+        {
+          "stepTitle": "Final Setup and Activation",
+          "text": "ok",
+          "stepIndex": 11
+        }
+      ],
+      "machineId": "MKsBpj3PpveSILkZ0UcI",
+      "fromSize": "5\" 1/2",
+      "duration": 45
+    },
+    {
+      "id": "gpd01EfRWRAeHTGZ2c2N",
+      "fromSize": "5\" 1/2",
+      "machineId": "MKsBpj3PpveSILkZ0UcI",
+      "duration": 160,
+      "operatorName": "la",
+      "date": {
+        "type": "firestore/timestamp/1.0",
+        "seconds": 1764760824,
+        "nanoseconds": 346000000
+      },
+      "stepNotes": [],
+      "toSize": "4\" 1/2",
+      "finalNote": ""
+    },
+    {
+      "id": "tXzjfGeREEXZeGdhhKQP",
+      "operatorName": "123",
+      "machineId": "MKsBpj3PpveSILkZ0UcI",
+      "toSize": "4\" 1/2",
+      "date": {
+        "type": "firestore/timestamp/1.0",
+        "seconds": 1764852108,
+        "nanoseconds": 447000000
+      },
+      "fromSize": "5\" 1/2",
+      "stepNotes": [],
+      "duration": 266,
+      "finalNote": ""
+    },
+    {
+      "id": "xbveQCBAbwMZGeBZAJcJ",
+      "date": {
+        "type": "firestore/timestamp/1.0",
+        "seconds": 1764760825,
+        "nanoseconds": 17000000
+      },
+      "duration": 160,
+      "finalNote": "",
+      "toSize": "4\" 1/2",
+      "machineId": "MKsBpj3PpveSILkZ0UcI",
+      "stepNotes": [],
+      "operatorName": "la",
+      "fromSize": "5\" 1/2"
+    }
+  ]
+}

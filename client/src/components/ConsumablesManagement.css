@@ -1,0 +1,288 @@
+.consumables-management {
+    padding: 20px;
+    color: var(--text-color);
+}
+
+.header-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    background: var(--white);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+}
+
+.back-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: none;
+    border: none;
+    color: var(--text-light);
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.view-toggle {
+    display: flex;
+    gap: 10px;
+    background: var(--background-color);
+    padding: 5px;
+    border-radius: 8px;
+}
+
+.view-toggle button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    border-radius: 6px;
+    font-weight: 500;
+    color: var(--text-light);
+}
+
+.view-toggle button.active {
+    background: var(--white);
+    color: var(--primary-color);
+    box-shadow: var(--shadow);
+}
+
+.add-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/* Grid Layout */
+.items-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.item-card {
+    background: var(--white);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+}
+
+.item-image {
+    height: 180px;
+    background: var(--background-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.item-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.item-details {
+    padding: 15px;
+    flex-grow: 1;
+}
+
+.item-details h3 {
+    margin: 0 0 5px 0;
+    font-size: 1.1rem;
+    color: var(--text-color);
+}
+
+.item-details .code {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin: 0 0 10px 0;
+}
+
+.item-details .stock {
+    font-size: 1rem;
+    color: #2e7d32;
+}
+[data-theme='dark'] .item-details .stock {
+    color: #4ade80;
+}
+
+.item-details .stock.low {
+    color: #d32f2f;
+}
+[data-theme='dark'] .item-details .stock.low {
+    color: #f87171;
+}
+
+.item-actions {
+    padding: 15px;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.item-actions button {
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    background: var(--white);
+    color: var(--text-color);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.item-actions button.consume-btn {
+    width: 100%;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    gap: 8px;
+    padding: 10px;
+}
+
+.item-actions button.consume-btn:disabled {
+    background: var(--border-color);
+    color: var(--text-light);
+    cursor: not-allowed;
+}
+
+.item-actions button.delete {
+    color: #d32f2f;
+    border-color: #ffcdd2;
+}
+
+/* Logs Table */
+.logs-view table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--white);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+.logs-view th, .logs-view td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-color);
+}
+
+.logs-view th {
+    background: var(--background-color);
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+/* Modals */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: var(--white);
+    padding: 25px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: var(--shadow);
+    color: var(--text-color);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.form-group input {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 1rem;
+    background: var(--white);
+    color: var(--text-color);
+}
+
+.size-selection-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 15px 0;
+}
+
+.size-btn {
+    padding: 10px 15px;
+    border: 1px solid var(--border-color);
+    background: var(--white) !important;
+    color: var(--text-color) !important;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.size-btn:hover {
+    background-color: var(--background-color) !important;
+    border-color: var(--text-light);
+}
+
+.size-btn.selected {
+    background: var(--primary-color) !important;
+    color: white !important;
+    border-color: var(--primary-color);
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.modal-actions button {
+    padding: 8px 16px;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    background: var(--white);
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+.modal-actions button.primary {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+}

@@ -1,0 +1,51 @@
+# GitHub Actions workflow for deploying to Vercel
+#
+# Setup Instructions:
+# 1. Go to Vercel Dashboard → Settings → Tokens
+# 2. Create a new token and copy it
+# 3. Go to GitHub Repo → Settings → Secrets → Actions
+# 4. Create secrets:
+#    - VERCEL_TOKEN: Your Vercel token
+#    - VERCEL_ORG_ID: Your Vercel org ID
+#    - VERCEL_PROJECT_ID: Your Vercel project ID
+#
+# This workflow triggers on push to main branch
+
+name: Deploy to Vercel
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:  # Allow manual trigger
+
+env:
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: client/package-lock.json
+
+      - name: Install Vercel CLI
+        run: npm install -g vercel@latest
+
+      - name: Pull Vercel Environment
+        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Build Project
+        run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Deploy to Vercel
+        run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}

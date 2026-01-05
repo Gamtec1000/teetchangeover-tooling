@@ -1,0 +1,468 @@
+/* BatchStepView.css */
+
+/* Root Container */
+.batch-view-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  background-color: var(--background-color);
+  overflow: hidden;
+  color: var(--text-color);
+}
+
+/* Header */
+.batch-header {
+  flex-shrink: 0;
+  background-color: var(--white);
+  padding: 0.2rem 0.75rem;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: var(--shadow);
+  z-index: 10;
+}
+
+.header-title h2 {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text-color);
+  line-height: 1.2;
+}
+
+.header-progress {
+  font-size: 0.7rem;
+  color: var(--text-light);
+  margin-top: 0;
+}
+
+.batch-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.timer-badge {
+  background-color: var(--background-color); /* Was #eef2ff, using generic bg or need specific var */
+  color: var(--primary-color);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  border: 1px solid var(--border-color);
+}
+/* Specific override for light mode to keep original look if desired, or just stick to vars */
+[data-theme='light'] .timer-badge {
+    background-color: #eef2ff;
+    border-color: #e0e7ff;
+}
+
+.btn-exit {
+  background: transparent;
+  border: 1px solid #ef4444;
+  color: #ef4444;
+  padding: 2px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.75rem;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.btn-exit:hover {
+  background-color: rgba(239, 68, 68, 0.1); /* transparent red */
+}
+
+/* Main Body Area */
+.batch-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column; /* Mobile/Portrait Default */
+  overflow: hidden;
+  position: relative;
+}
+
+/* --- List Panel (Bottom in Portrait, Left in Landscape) --- */
+.step-list-panel {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--white);
+  border-top: 1px solid var(--border-color);
+  order: 2; /* Below details in portrait */
+  flex: 1; /* Take remaining space in portrait */
+  min-height: 150px; /* Ensure some of the list is always visible */
+  overflow: hidden;
+}
+
+.step-list-scroll {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+/* --- Details Panel (Top in Portrait, Right in Landscape) --- */
+.step-details-panel {
+  flex: 0 0 auto; /* Height based on content in portrait */
+  display: flex;
+  flex-direction: column;
+  background-color: var(--background-color);
+  overflow-y: auto;
+  padding: 0.75rem;
+  order: 1; /* Above list in portrait */
+  max-height: 65%; /* Cap height to leave room for list */
+}
+
+.detail-content-container {
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* --- Responsive Landscape Layout --- */
+@media (orientation: landscape) {
+  .batch-body {
+    flex-direction: row;
+  }
+
+  .step-list-panel {
+    order: 1;
+    width: 320px; /* Fixed width sidebar */
+    height: 100%;
+    border-top: none;
+    border-right: 1px solid var(--border-color);
+    flex-shrink: 0;
+    flex: none; /* Reset portrait flex */
+  }
+
+  .step-details-panel {
+    order: 2;
+    height: 100%;
+    flex: 1; /* Take rest of horizontal space */
+    max-height: none; /* Remove portrait cap */
+    background-color: var(--background-color);
+  }
+}
+
+/* Step Item in List */
+.step-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background-color: var(--white);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: var(--text-color);
+}
+
+.step-item:hover {
+  border-color: var(--text-light);
+  background-color: var(--background-color);
+}
+
+.step-item.active {
+  border-color: var(--primary-color);
+  background-color: var(--background-color); /* Fallback */
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+[data-theme='light'] .step-item.active {
+    background-color: #eff6ff;
+}
+[data-theme='dark'] .step-item.active {
+    background-color: var(--step-active-bg);
+    border-color: var(--step-active-border);
+}
+
+
+.step-indicator {
+  font-size: 1.3rem;
+  color: var(--text-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+  cursor: pointer; /* Distinct click target for check */
+  transition: color 0.2s;
+}
+
+.step-indicator:hover {
+  color: var(--text-color);
+}
+
+.step-item.completed .step-indicator {
+  color: var(--success-color, #10b981);
+}
+
+.step-content {
+  flex: 1;
+  overflow: hidden;
+}
+
+.step-title-text {
+  font-weight: 600;
+  color: var(--text-color);
+  font-size: 0.9rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.step-subtitle-text {
+  font-size: 0.75rem;
+  color: var(--text-light);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 2px;
+}
+
+/* List Footer */
+.list-footer {
+  padding: 0.75rem;
+  background-color: var(--white);
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.btn-nav {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.btn-prev {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+}
+
+.btn-next {
+  background-color: var(--primary-color);
+  color: #fff; /* Always white on primary button */
+}
+
+.btn-next:disabled {
+  background-color: var(--border-color);
+  color: var(--text-light);
+  cursor: not-allowed;
+}
+
+/* Detail View Components */
+.detail-header {
+  margin-bottom: 0.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.detail-header h3 {
+  font-size: 1.1rem;
+  color: var(--text-color);
+  margin: 0;
+}
+
+.detail-image-area {
+  width: 100%;
+  background-color: var(--white); /* Was #e5e7eb, using var or specific gray */
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 21/9; /* Much wider aspect ratio to take less height */
+  max-height: 250px; /* Reduced from 400px */
+}
+[data-theme='light'] .detail-image-area {
+    background-color: #e5e7eb;
+    border: none;
+}
+
+.detail-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.image-controls {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  background: rgba(0,0,0,0.6);
+  padding: 4px 10px;
+  border-radius: 20px;
+  color: white;
+  font-size: 0.75rem;
+  align-items: center;
+}
+
+.btn-img-nav {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.detail-description {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--text-color);
+  padding: 0.75rem;
+  background: var(--white);
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  white-space: pre-wrap; /* Added this line */
+}
+
+.resources-section {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.resource-chip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.1s;
+  border: 1px solid transparent;
+}
+
+.resource-chip:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.chip-part {
+  background-color: #eff6ff;
+  color: #1d4ed8;
+  border-color: #dbeafe;
+}
+[data-theme='dark'] .chip-part {
+    background-color: rgba(59, 130, 246, 0.2);
+    color: #93c5fd;
+    border-color: rgba(59, 130, 246, 0.4);
+}
+
+.chip-tool {
+  background-color: #fff7ed;
+  color: #c2410c;
+  border-color: #ffedd5;
+}
+[data-theme='dark'] .chip-tool {
+    background-color: rgba(249, 115, 22, 0.2);
+    color: #fdba74;
+    border-color: rgba(249, 115, 22, 0.4);
+}
+
+.chip-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.btn-notes-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 12px;
+    color: white; /* Keep white text for contrast on primary color */
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    width: fit-content;
+    font-size: 1rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+}
+
+.btn-notes-toggle:hover {
+    filter: brightness(110%);
+    transform: translateY(-1px);
+}
+
+.btn-notes-toggle:active {
+    transform: translateY(0);
+}
+
+/* Empty State */
+.empty-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--text-light);
+  text-align: center;
+  padding: 2rem;
+}
+
+/* Modal/Backdrop */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  z-index: 2000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.resource-modal {
+  background: var(--white);
+  padding: 20px;
+  border-radius: 12px;
+  max-width: 500px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  color: var(--text-color);
+}
+
+.zoom-modal {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.zoom-modal img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}

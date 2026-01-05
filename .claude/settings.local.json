@@ -1,0 +1,35 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cat:*)",
+      "Bash(wc:*)",
+      "Bash(grep:*)",
+      "Bash(git -C /c/Users/GMata/ChangeOverV2 log --oneline -20)",
+      "Bash(node:*)",
+      "Bash(npm:*)",
+      "Bash(npx:*)",
+      "Bash(paste:*)",
+      "Bash(git -C /c/Users/GMata/ChangeOverV2 log --all --pretty=format:\"%h %s\")",
+      "WebFetch(domain:vercel.com)",
+      "WebFetch(domain:firebase.google.com)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(git checkout:*)",
+      "Bash(ls:*)",
+      "Bash(git check-ignore:*)",
+      "Bash(git -C /c/Users/GMata/ChangeOverV2 status)",
+      "Bash(git -C /c/Users/GMata/ChangeOverV2 diff --stat)",
+      "Bash(git -C /c/Users/GMata/ChangeOverV2 log --oneline -5)",
+      "Bash(git -C /c/Users/GMata/ChangeOverV2 add:*)",
+      "Bash(git -C /c/Users/GMata/ChangeOverV2 push)",
+      "Bash(git -C /c/Users/GMata/ChangeOverV2 log --oneline -10)",
+      "Bash(curl:*)",
+      "Bash(base64:*)",
+      "Bash(npm install:*)",
+      "Bash(python3:*)",
+      "Bash(npm run build:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nInitial commit: Migrate from Firebase to Supabase with Vercel deployment\n\n- Add Supabase client and service layer \\(client/src/lib/supabase*.ts\\)\n- Create database schema for PostgreSQL \\(supabase-schema.sql\\)\n- Update all components to use Supabase instead of Firebase\n- Add Vercel configuration \\(vercel.json\\) and serverless API endpoints\n- Add GitHub Actions workflow for Vercel deployment\n- Add Claude Code settings and organizational structure\n- Include environment templates \\(.env.example\\)\n\n🤖 Generated with [Claude Code]\\(https://claude.com/claude-code\\)\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")"
+    ]
+  }
+}

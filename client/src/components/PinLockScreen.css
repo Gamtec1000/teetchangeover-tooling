@@ -1,0 +1,124 @@
+.pin-lock-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #1a1a1a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  color: white;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+.pin-lock-container {
+  background-color: #2c2c2c;
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  width: 100%;
+  max-width: 400px;
+}
+
+.pin-lock-title {
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.pin-display {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 2rem;
+}
+
+.pin-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid #555;
+  transition: all 0.2s ease;
+}
+
+.pin-dot.filled {
+  background-color: #367BF5;
+  border-color: #367BF5;
+}
+
+.pin-keypad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.pin-key {
+  background-color: #3a3a3a;
+  border: none;
+  border-radius: 8px;
+  padding: 16px 0;
+  font-size: 1.25rem;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.1s;
+}
+
+.pin-key:hover {
+  background-color: #4a4a4a;
+}
+
+.pin-key:active {
+  background-color: #5a5a5a;
+  transform: scale(0.98);
+}
+
+.pin-key.clear {
+  color: #ff5252;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.pin-key.enter {
+  color: #4caf50;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.pin-error {
+  color: #ff5252;
+  margin-top: 1rem;
+  height: 1.2rem;
+  font-size: 0.9rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.pin-error.visible {
+  opacity: 1;
+}
+
+.forgot-pin-button {
+  background: none;
+  border: none;
+  color: #888;
+  font-size: 0.9rem;
+  margin-top: 1.5rem;
+  cursor: pointer;
+  text-decoration: underline;
+  transition: color 0.2s ease;
+}
+
+.forgot-pin-button:hover {
+  color: #aaa;
+}
+
+.forgot-pin-message {
+  color: #fff;
+  margin-top: 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+}
