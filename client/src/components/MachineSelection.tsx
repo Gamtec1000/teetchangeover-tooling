@@ -7,6 +7,7 @@ interface Machine {
   id: string;
   name: string;
   imageUrl?: string;
+  order?: number;
 }
 
 interface MachineSelectionProps {
@@ -18,8 +19,10 @@ const MachineSelection: React.FC<MachineSelectionProps> = ({ onMachineSelect }) 
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const unsubscribe = getCollectionSnapshot('machines', (fetchedMachines: any) => {
-      setMachines(fetchedMachines);
+    const unsubscribe = getCollectionSnapshot('machines', (fetchedMachines: Machine[]) => {
+      // Sort by order field
+      const sorted = [...fetchedMachines].sort((a, b) => (a.order || 999) - (b.order || 999));
+      setMachines(sorted);
       setLoading(false);
     });
 
