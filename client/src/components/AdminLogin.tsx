@@ -1,6 +1,6 @@
 // client/src/components/AdminLogin.tsx
 import React, { useState } from 'react';
-import { signInWithEmailAndPassword } from '../lib/supabase-service';
+import { signInWithEmailAndPassword } from '../firebase';
 
 interface AdminLoginProps {
   onLoginSuccess: () => void;

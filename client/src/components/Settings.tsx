@@ -1,6 +1,6 @@
 // client/src/components/Settings.tsx
 import React, { useState } from 'react';
-import { deleteAllChangeoverLogs } from '../lib/supabase-service';
+import { deleteAllChangeoverLogs } from '../firebase';
 
 const Settings: React.FC = () => {
     const [loading, setLoading] = useState(false);

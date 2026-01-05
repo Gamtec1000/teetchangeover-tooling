@@ -5,8 +5,8 @@ import SizeSelection from './SizeSelection';
 import PreparationSummary from './PreparationSummary';
 import ChangeoverSteps from './ChangeoverSteps';
 import BatchStepView from './BatchStepView';
-import { addChangeoverLog } from '../lib/supabase-service';
-import { getChangeoverTemplate, getPartForMachinePipeAndName, getTools, getMachines } from '../lib/supabase-service'; // REMOVED getParts
+import { addChangeoverLog } from '../firebase';
+import { getChangeoverTemplate, getPartForMachinePipeAndName, getTools, getMachines } from '../firebase'; // REMOVED getParts
 import type { Machine, Part, Tool, ChangeoverTemplate, Step } from '../types'; // IMPORTED TYPES
 
 interface ChangeoverFlowProps {

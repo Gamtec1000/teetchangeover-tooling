@@ -6,7 +6,7 @@ import {
   updateMachine, 
   deleteMachine,
   uploadFile
-} from '../lib/supabase-service';
+} from '../firebase';
 import type { Machine } from '../types'; // Import Machine type
 
 const MachineManagement: React.FC = () => {

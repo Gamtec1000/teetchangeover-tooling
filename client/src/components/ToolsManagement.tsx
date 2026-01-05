@@ -1,6 +1,6 @@
 // client/src/components/ToolsManagement.tsx
 import React, { useState, useEffect } from 'react';
-import { getCollectionSnapshot, addTool, updateTool, deleteTool, uploadFile } from '../lib/supabase-service';
+import { getCollectionSnapshot, addTool, updateTool, deleteTool, uploadFile } from '../firebase';
 import { formatImageUrl } from '../utils/urlHelpers';
 
 interface Tool {

@@ -1,6 +1,6 @@
 // client/src/components/ChangeoverReadOnlyView.tsx
 import React, { useState, useEffect } from 'react';
-import { getMachines, getPipeSizes, getChangeoverTemplate, getPartForMachinePipeAndName, getTools } from '../lib/supabase-service'; // Import getPartForMachinePipeAndName
+import { getMachines, getPipeSizes, getChangeoverTemplate, getPartForMachinePipeAndName, getTools } from '../firebase'; // Import getPartForMachinePipeAndName
 import { formatImageUrl } from '../utils/urlHelpers';
 import type { Machine, Part, Tool, Step, ChangeoverTemplate, PipeSize, Document } from '../types'; // Import types
 

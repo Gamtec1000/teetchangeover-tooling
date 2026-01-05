@@ -1,6 +1,6 @@
 // client/src/components/SizeSelection.tsx
 import React, { useState, useEffect } from 'react';
-import { getPipeSizes } from '../lib/supabase-service';
+import { getPipeSizes } from '../firebase';
 
 interface SizeSelectionProps {
   onBack: () => void;

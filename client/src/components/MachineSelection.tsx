@@ -1,6 +1,6 @@
 // client/src/components/MachineSelection.tsx
 import React, { useState, useEffect } from 'react';
-import { getCollectionSnapshot } from '../lib/supabase-service';
+import { getCollectionSnapshot } from '../firebase';
 import { formatImageUrl } from '../utils/urlHelpers';
 
 interface Machine {

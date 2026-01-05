@@ -8,7 +8,7 @@ import {
     consumeItem, 
     uploadFile,
     getPipeSizes
-} from '../lib/supabase-service';
+} from '../firebase';
 import MachineSelection from './MachineSelection';
 import { formatImageUrl } from '../utils/urlHelpers';
 import { FiPlus, FiEdit, FiTrash2, FiMinus, FiBox, FiClock, FiArrowLeft } from 'react-icons/fi';

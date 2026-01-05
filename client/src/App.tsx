@@ -1,6 +1,6 @@
 // src/App.tsx
 import React, { useState, useEffect, useMemo } from 'react';
-import { onAuthStateChanged, signOut, getCollectionSnapshot, deleteChangeoverLog } from './lib/supabase-service';
+import { onAuthStateChanged, signOut, getCollectionSnapshot, deleteChangeoverLog } from './firebase';
 import AdminLogin from './components/AdminLogin';
 import MachineManagement from './components/MachineManagement';
 import PartsManagement from './components/PartsManagement';

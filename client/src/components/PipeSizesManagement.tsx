@@ -1,6 +1,6 @@
 // client/src/components/PipeSizesManagement.tsx
 import React, { useState, useEffect } from 'react';
-import { getCollectionSnapshot, addPipeSize, deletePipeSize, updatePipeSize } from '../lib/supabase-service';
+import { getCollectionSnapshot, addPipeSize, deletePipeSize, updatePipeSize } from '../firebase';
 
 interface PipeSize {
   id: string;

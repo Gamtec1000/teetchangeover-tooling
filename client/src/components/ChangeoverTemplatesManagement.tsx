@@ -13,7 +13,7 @@ import {
   uploadFile,
   updateChangeoverTemplate,
   subscribeToSteps
-} from '../lib/supabase-service';
+} from '../firebase';
 
 
 import { formatImageUrl } from '../utils/urlHelpers';

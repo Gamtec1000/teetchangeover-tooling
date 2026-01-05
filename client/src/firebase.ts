@@ -1,15 +1,15 @@
 // src/firebase.ts
 import { initializeApp } from 'firebase/app';
-import { 
-  getAuth, 
-  signInAnonymously, 
-  signInWithEmailAndPassword, 
-  signOut,
-  onAuthStateChanged
+import {
+  getAuth,
+  signInAnonymously,
+  signInWithEmailAndPassword as firebaseSignIn,
+  signOut as firebaseSignOut,
+  onAuthStateChanged as firebaseAuthStateChanged
 } from 'firebase/auth';
-import { 
-  getFirestore, 
-  collection, 
+import {
+  getFirestore,
+  collection,
   onSnapshot,
   addDoc,
   updateDoc,
@@ -40,14 +40,23 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-// Auth state listener
-onAuthStateChanged(auth, (user) => {
+// Auth state listener for auto-anonymous sign-in
+firebaseAuthStateChanged(auth, (user) => {
   if (!user) {
     signInAnonymously(auth).catch((error) => {
       console.error("Anonymous sign-in failed:", error);
     });
   }
 });
+
+// Wrapper functions to simplify auth usage (hide auth parameter)
+const signInWithEmailAndPassword = (email: string, password: string) =>
+  firebaseSignIn(auth, email, password);
+
+const signOut = () => firebaseSignOut(auth);
+
+const onAuthStateChanged = (callback: (user: any) => void) =>
+  firebaseAuthStateChanged(auth, callback);
 
 // Function to get real-time updates for a collection
 const getCollectionSnapshot = (collectionName: string, callback: (data: any[]) => void) => {
@@ -194,6 +203,9 @@ const getChangeoverTemplate = async (machineId: string): Promise<ChangeoverTempl
 
 const addChangeoverTemplate = (templateData: Partial<ChangeoverTemplate>) => addDoc(collection(db, 'changeover_templates'), templateData);
 
+const updateChangeoverTemplate = (templateId: string, templateData: Partial<ChangeoverTemplate>) =>
+  updateDoc(doc(db, 'changeover_templates', templateId), templateData);
+
 const deleteChangeoverTemplate = async (templateId: string) => {
     const batch = writeBatch(db);
     const stepsCollection = collection(db, 'changeover_templates', templateId, 'steps');
@@ -209,7 +221,28 @@ const addStep = (templateId: string, stepData: Partial<Step>) => addDoc(collecti
 const deleteStep = (templateId: string, stepId: string) => deleteDoc(doc(db, 'changeover_templates', templateId, 'steps', stepId));
 const updateStep = (templateId: string, stepId: string, stepData: Partial<Step>) => updateDoc(doc(db, 'changeover_templates', templateId, 'steps', stepId), stepData);
 
+// Subscribe to steps subcollection for real-time updates
+const subscribeToSteps = (templateId: string, callback: (steps: Step[]) => void) => {
+  const stepsCollection = collection(db, 'changeover_templates', templateId, 'steps');
+  return onSnapshot(stepsCollection, (snapshot) => {
+    const steps = snapshot.docs.map(doc => ({ ...doc.data(), id: doc.id } as Step));
+    callback(steps);
+  }, (error) => {
+    console.error('Error subscribing to steps:', error);
+  });
+};
+
 // --- CRUD Functions for Changeover Logs ---
+const addChangeoverLog = (logData: {
+  machineId: string;
+  fromSize: string;
+  toSize: string;
+  duration: number;
+  stepNotes: any[];
+  finalNote: string;
+  operatorName: string;
+}) => addDoc(collection(db, 'changeover_logs'), { ...logData, date: serverTimestamp() });
+
 const deleteChangeoverLog = (logId: string) => deleteDoc(doc(db, 'changeover_logs', logId));
 
 const deleteAllChangeoverLogs = async () => {
@@ -307,10 +340,13 @@ export {
   getChangeoverTemplates,
   getChangeoverTemplate,
   addChangeoverTemplate,
+  updateChangeoverTemplate,
   deleteChangeoverTemplate,
   addStep,
   deleteStep,
   updateStep,
+  subscribeToSteps,
+  addChangeoverLog,
   deleteChangeoverLog,
   deleteAllChangeoverLogs,
   getConsumables,

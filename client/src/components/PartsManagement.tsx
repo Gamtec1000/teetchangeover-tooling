@@ -1,6 +1,6 @@
 // client/src/components/PartsManagement.tsx
 import React, { useState, useEffect } from 'react';
-import { getCollectionSnapshot, addPart, deletePart, updatePart, getMachines, getPipeSizes, uploadFile } from '../lib/supabase-service';
+import { getCollectionSnapshot, addPart, deletePart, updatePart, getMachines, getPipeSizes, uploadFile } from '../firebase';
 import { formatImageUrl } from '../utils/urlHelpers';
 import type { Part, Machine, PipeSize } from '../types';
 
