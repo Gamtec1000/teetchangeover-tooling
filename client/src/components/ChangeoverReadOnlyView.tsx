@@ -61,7 +61,9 @@ const ChangeoverReadOnlyView: React.FC = () => {
 
         const sizeData = await getPipeSizes();
         setPipeSizes(sizeData as PipeSize[]); // Type assertion
-        if (sizeData.length > 0) setSelectedPipeSize((sizeData[0] as PipeSize).name);
+        const sortedSizes = [...sizeData].sort((a, b) => ((a as PipeSize).order || 999) - ((b as PipeSize).order || 999));
+        setPipeSizes(sortedSizes as PipeSize[]);
+        if (sortedSizes.length > 0) setSelectedPipeSize((sortedSizes[0] as PipeSize).size);
         
         // No need to fetch all parts and tools globally here anymore
     };
@@ -134,12 +136,12 @@ const ChangeoverReadOnlyView: React.FC = () => {
             <h4 style={{ marginBottom: '0.5rem', color: 'var(--text-color)' }}>Select Pipe Size:</h4>
             <div className="selection-grid">
                 {pipeSizes.map(p => (
-                    <div 
-                        key={p.id} 
-                        className={`selection-button ${selectedPipeSize === p.name ? 'selected' : ''}`}
-                        onClick={() => setSelectedPipeSize(p.name)}
+                    <div
+                        key={p.id}
+                        className={`selection-button ${selectedPipeSize === p.size ? 'selected' : ''}`}
+                        onClick={() => setSelectedPipeSize(p.size)}
                     >
-                        {p.name}
+                        {p.size}
                     </div>
                 ))}
             </div>

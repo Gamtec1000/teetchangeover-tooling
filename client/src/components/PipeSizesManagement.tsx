@@ -1,24 +1,21 @@
 // client/src/components/PipeSizesManagement.tsx
 import React, { useState, useEffect } from 'react';
 import { getCollectionSnapshot, addPipeSize, deletePipeSize, updatePipeSize } from '../firebase';
-
-interface PipeSize {
-  id: string;
-  name: string;
-}
+import type { PipeSize } from '../types';
 
 const PipeSizesManagement: React.FC = () => {
   const [pipeSizes, setPipeSizes] = useState<PipeSize[]>([]);
   const [loading, setLoading] = useState(true);
-  const [newPipeSizeName, setNewPipeSizeName] = useState('');
-  
+  const [newPipeSizeValue, setNewPipeSizeValue] = useState('');
+
   // Edit State
   const [editingId, setEditingId] = useState<string | null>(null);
-  const [editName, setEditName] = useState('');
+  const [editValue, setEditValue] = useState('');
 
   useEffect(() => {
-    const unsubscribe = getCollectionSnapshot('pipe_sizes', (fetchedPipeSizes: any) => {
-      setPipeSizes(fetchedPipeSizes);
+    const unsubscribe = getCollectionSnapshot('pipe_sizes', (fetchedPipeSizes: PipeSize[]) => {
+      const sorted = [...fetchedPipeSizes].sort((a, b) => (a.order || 999) - (b.order || 999));
+      setPipeSizes(sorted);
       setLoading(false);
     });
     return () => unsubscribe();
@@ -26,9 +23,9 @@ const PipeSizesManagement: React.FC = () => {
 
   const handleAddPipeSize = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (newPipeSizeName.trim() === '') return;
-    await addPipeSize({ name: newPipeSizeName });
-    setNewPipeSizeName('');
+    if (newPipeSizeValue.trim() === '') return;
+    await addPipeSize({ size: newPipeSizeValue, order: pipeSizes.length + 1 });
+    setNewPipeSizeValue('');
   };
 
   const handleDeletePipeSize = async (id: string) => {
@@ -37,19 +34,19 @@ const PipeSizesManagement: React.FC = () => {
     }
   };
 
-  const startEditing = (size: PipeSize) => {
-      setEditingId(size.id);
-      setEditName(size.name);
+  const startEditing = (ps: PipeSize) => {
+      setEditingId(ps.id);
+      setEditValue(ps.size);
   };
 
   const cancelEditing = () => {
       setEditingId(null);
-      setEditName('');
+      setEditValue('');
   };
 
   const saveEdit = async (id: string) => {
-      if (editName.trim() === '') return;
-      await updatePipeSize(id, { name: editName });
+      if (editValue.trim() === '') return;
+      await updatePipeSize(id, { size: editValue });
       setEditingId(null);
   };
 
@@ -63,32 +60,32 @@ const PipeSizesManagement: React.FC = () => {
       <form onSubmit={handleAddPipeSize} className="add-pipe-size-form">
         <input
           type="text"
-          placeholder="New pipe size name"
-          value={newPipeSizeName}
-          onChange={(e) => setNewPipeSizeName(e.target.value)}
+          placeholder="New pipe size (e.g., 4.5 in)"
+          value={newPipeSizeValue}
+          onChange={(e) => setNewPipeSizeValue(e.target.value)}
         />
         <button type="submit">Add Pipe Size</button>
       </form>
       <ul className="management-list">
-        {pipeSizes.map((size) => (
-          <li key={size.id} className="list-item-card">
-            {editingId === size.id ? (
+        {pipeSizes.map((ps) => (
+          <li key={ps.id} className="list-item-card">
+            {editingId === ps.id ? (
                 <div className="edit-form">
-                    <input 
-                        type="text" 
-                        value={editName} 
-                        onChange={(e) => setEditName(e.target.value)}
-                        style={{ flexGrow: 1 }} 
+                    <input
+                        type="text"
+                        value={editValue}
+                        onChange={(e) => setEditValue(e.target.value)}
+                        style={{ flexGrow: 1 }}
                     />
-                    <button onClick={() => saveEdit(size.id)} style={{ backgroundColor: '#4caf50' }}>Save</button>
+                    <button onClick={() => saveEdit(ps.id)} style={{ backgroundColor: '#4caf50' }}>Save</button>
                     <button onClick={cancelEditing} style={{ backgroundColor: '#9e9e9e' }}>Cancel</button>
                 </div>
             ) : (
                 <>
-                    <span className="content"><strong>{size.name}</strong></span>
+                    <span className="content"><strong>{ps.size}</strong></span>
                     <div className="actions">
-                        <button onClick={() => startEditing(size)} style={{ backgroundColor: '#2196f3' }}>Edit</button>
-                        <button onClick={() => handleDeletePipeSize(size.id)} style={{ backgroundColor: '#ff5252' }}>Delete</button>
+                        <button onClick={() => startEditing(ps)} style={{ backgroundColor: '#2196f3' }}>Edit</button>
+                        <button onClick={() => handleDeletePipeSize(ps.id)} style={{ backgroundColor: '#ff5252' }}>Delete</button>
                     </div>
                 </>
             )}

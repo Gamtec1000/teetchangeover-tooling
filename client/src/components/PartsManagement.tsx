@@ -55,9 +55,10 @@ const PartsManagement: React.FC<PartsManagementProps> = ({ isAdmin = false }) =>
       }
       
       const pipeSizeData = await getPipeSizes();
-      setPipeSizes(pipeSizeData as PipeSize[]);
-      if (pipeSizeData.length > 0) {
-        setSelectedPipeSize((pipeSizeData[0] as PipeSize).name);
+      const sortedSizes = [...pipeSizeData].sort((a, b) => ((a as PipeSize).order || 999) - ((b as PipeSize).order || 999));
+      setPipeSizes(sortedSizes as PipeSize[]);
+      if (sortedSizes.length > 0) {
+        setSelectedPipeSize((sortedSizes[0] as PipeSize).size);
       }
       
       const unsubscribe = getCollectionSnapshot('parts', (fetchedParts: any) => {
@@ -251,12 +252,12 @@ const PartsManagement: React.FC<PartsManagementProps> = ({ isAdmin = false }) =>
           <h4 style={{ marginBottom: '0.5rem', color: 'var(--text-color)' }}>Select Pipe Size:</h4>
           <div className="selection-grid">
               {pipeSizes.map(p => (
-                  <div 
-                      key={p.id} 
-                      className={`selection-button ${selectedPipeSize === p.name ? 'selected' : ''}`}
-                      onClick={() => setSelectedPipeSize(p.name)}
+                  <div
+                      key={p.id}
+                      className={`selection-button ${selectedPipeSize === p.size ? 'selected' : ''}`}
+                      onClick={() => setSelectedPipeSize(p.size)}
                   >
-                      {p.name}
+                      {p.size}
                   </div>
               ))}
           </div>

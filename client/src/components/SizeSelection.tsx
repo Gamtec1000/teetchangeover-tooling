@@ -1,16 +1,12 @@
 // client/src/components/SizeSelection.tsx
 import React, { useState, useEffect } from 'react';
 import { getPipeSizes } from '../firebase';
+import type { PipeSize } from '../types';
 
 interface SizeSelectionProps {
   onBack: () => void;
   onContinue: (fromSize: string, toSize: string) => void;
   onBatchStart: (fromSize: string, toSize: string) => void;
-}
-
-interface PipeSize {
-  id: string;
-  name: string;
 }
 
 const SizeSelection: React.FC<SizeSelectionProps> = ({ onBack, onContinue, onBatchStart }) => {
@@ -23,7 +19,9 @@ const SizeSelection: React.FC<SizeSelectionProps> = ({ onBack, onContinue, onBat
   useEffect(() => {
     const fetchPipeSizes = async () => {
       const sizes = await getPipeSizes();
-      setPipeSizes(sizes as PipeSize[]);
+      // Sort by order field
+      const sorted = [...sizes].sort((a, b) => (a.order || 999) - (b.order || 999));
+      setPipeSizes(sorted as PipeSize[]);
       setLoading(false);
     };
 
@@ -67,13 +65,13 @@ const SizeSelection: React.FC<SizeSelectionProps> = ({ onBack, onContinue, onBat
       <div className="form-group">
         <label>From:</label>
         <div className="selection-grid">
-          {pipeSizes.map((size) => (
-            <div 
-              key={size.id} 
-              className={`selection-button ${fromSize === size.name ? 'selected' : ''}`}
-              onClick={() => { setFromSize(size.name); setErrorMessage(null); }}
+          {pipeSizes.map((ps) => (
+            <div
+              key={ps.id}
+              className={`selection-button ${fromSize === ps.size ? 'selected' : ''}`}
+              onClick={() => { setFromSize(ps.size); setErrorMessage(null); }}
             >
-              {size.name}
+              {ps.size}
             </div>
           ))}
         </div>
@@ -81,13 +79,13 @@ const SizeSelection: React.FC<SizeSelectionProps> = ({ onBack, onContinue, onBat
       <div className="form-group">
         <label>To:</label>
         <div className="selection-grid">
-          {pipeSizes.map((size) => (
-            <div 
-              key={size.id} 
-              className={`selection-button ${toSize === size.name ? 'selected' : ''}`}
-              onClick={() => { setToSize(size.name); setErrorMessage(null); }} // Clear error on change
+          {pipeSizes.map((ps) => (
+            <div
+              key={ps.id}
+              className={`selection-button ${toSize === ps.size ? 'selected' : ''}`}
+              onClick={() => { setToSize(ps.size); setErrorMessage(null); }}
             >
-              {size.name}
+              {ps.size}
             </div>
           ))}
         </div>

@@ -34,7 +34,8 @@ export interface Part {
 // Represents a pipe size
 export interface PipeSize {
   id: string;
-  name: string;
+  size: string;
+  order?: number;
 }
 
 // Represents a tool
