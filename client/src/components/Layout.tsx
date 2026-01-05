@@ -84,7 +84,7 @@ const Layout: React.FC<LayoutProps> = ({ page, onNavigate, children, isAdmin, on
           <div className="sidebar-header">
             {isSidebarOpen && (
               <img
-                src="/tenaris-logo.svg"
+                src="/tenaris-logo.png"
                 alt="Tenaris"
                 style={{ height: '40px', objectFit: 'contain' }}
               />
